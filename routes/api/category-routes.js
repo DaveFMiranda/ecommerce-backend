@@ -1,9 +1,6 @@
 const router = require("express").Router();
 const { Category, Product } = require("../../models");
 
-// WHAT GOES IN THE CREATE A CATEGORY LOGIC?
-//
-
 // The `/api/categories` endpoint
 
 router.get("/", async (req, res) => {
