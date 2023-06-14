@@ -3,6 +3,7 @@ const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
 
+// Finds all categories and includes their associated products
 router.get("/", async (req, res) => {
   try {
     const categoryData = await Category.findAll({
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Finds on category by its 'id' value and includes its associated products
 router.get("/:id", async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
@@ -31,6 +33,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Create a new category
 router.post("/", async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
@@ -38,9 +41,9 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  // create a new category
 });
 
+// Update a category by its 'id' value
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -62,9 +65,9 @@ router.put("/:id", async (req, res) => {
     }
     res.status(500).json({ message: "Failed to update the category." });
   }
-  // update a category by its `id` value
 });
 
+// Delete a category by its 'id' value
 router.delete("/:id", async (req, res) => {
   try {
     const categoryData = await Category.destroy({
@@ -82,7 +85,6 @@ router.delete("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  // delete a category by its `id` value
 });
 
 module.exports = router;
